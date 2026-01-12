@@ -1,17 +1,17 @@
 class Solution {
     public int singleNonDuplicate(int[] nums) {
-        Map<Integer,Integer> map=new HashMap<>();
-    
-    for(int num:nums){
-      if(map.containsKey(num))
-        map.put(num,map.get(num)+1);
-      else
-        map.put(num,1);
+       int max=0,res=0;
+    for(int i=0;i<nums.length;i++){
+      max=Math.max(nums[i],max);
     }
-    int res=0;
-    for(Map.Entry<Integer,Integer> entry:map.entrySet()){
-      if(entry.getValue()==1){
-        res=entry.getKey();
+    int [] count=new int[max+1];
+    for (int num : nums) {
+            count[num]++;
+           
+    }
+    for(int i=0;i<count.length;i++){
+      if(count[i]==1){
+        res=i;
       }
     }
     return res;
